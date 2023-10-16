@@ -1,0 +1,74 @@
+body {
+  background: #f12711;
+  background: -webkit-linear-gradient(to right, #f5af19, #f12711);
+  background: linear-gradient(to right, #f5af19, #f12711);
+  height: 100vh;
+}
+
+h1,
+h3 {
+  text-align: center;
+}
+
+.container {
+  border-radius: 5px;
+  background-color: #f8f4e5;
+  padding: 20px;
+  max-width: 50%;
+}
+
+button {
+  background: #f12711;
+  color: white;
+  padding: 14px 80px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  border-radius: 30px;
+  font-weight: bolder;
+  transition: transform 0.5s;
+}
+
+button:hover {
+  transform: scale(1.2);
+}
+h4 {
+  text-align: center;
+}
+
+.inputbox,
+textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+
+.signupmain {
+  text-decoration: underline;
+  color: black;
+  font-weight: 700;
+  display: flex;
+  justify-content: center;
+}
+
+.signupmain:hover {
+  color: red;
+}
+
+.meaning {
+  font-weight: 600;
+}
+
+label {
+  font-weight: bolder;
+}
+
+.buttonmain {
+  display: flex;
+  justify-content: center;
+}

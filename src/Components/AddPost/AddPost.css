@@ -1,0 +1,134 @@
+@import url("https://fonts.googleapis.com/css?family=Fjalla+One&display=swap");
+
+/* .containerpost {
+  border-radius: 5px;
+  background-color: #f8f4e5;
+  padding: 20px;
+  width: 70%;
+  display: flex;
+} */
+
+.inputclass {
+  display: block;
+  width: 60%;
+  font-size: 14pt;
+  line-height: 28pt;
+  font-family: "Fjalla One";
+  margin-bottom: 28pt;
+  border: none;
+  border-bottom: 5px solid rgba(0, 0, 0, 1);
+  background: #f8f4e5;
+  min-width: 250px;
+  padding-left: 5px;
+  outline: none;
+  color: rgba(0, 0, 0, 1);
+  margin-right: 25px;
+}
+
+input:focus {
+  border-bottom: 5px solid #ffa580;
+}
+
+.ingrdientsinputclass {
+  display: block;
+  width: 90%;
+  font-size: 14pt;
+  line-height: 28pt;
+  font-family: "Fjalla One";
+  margin-bottom: 28pt;
+  border: none;
+  border-bottom: 5px solid rgba(0, 0, 0, 1);
+  background: #f8f4e5;
+  min-width: 250px;
+  padding-left: 5px;
+  outline: none;
+  color: rgba(0, 0, 0, 1);
+  margin-right: 25px;
+  height: 200px;
+  margin-top: 20px;
+}
+
+.ingrdientsinputclass:focus {
+  border-bottom: 5px solid #ffa580;
+}
+
+.postbutton {
+  display: block;
+  margin: 0 auto;
+  line-height: 28pt;
+  border-radius: 0px;
+  padding: 0 20px;
+  background: #ffa580;
+  letter-spacing: 2px;
+  transition: 0.2s all ease-in-out;
+  outline: none;
+  border: 1px solid rgba(0, 0, 0, 1);
+  box-shadow: 3px 3px 1px 1px #95a4ff, 3px 3px 1px 2px rgba(0, 0, 0, 1);
+  color: black;
+}
+
+.postbutton:hover {
+  background: rgba(0, 0, 0, 1);
+  color: white;
+  border: 1px solid rgba(0, 0, 0, 1);
+}
+
+.postcontainer {
+  width: 60%;
+  border-radius: 5px;
+  background-color: #f8f4e5;
+  padding: 20px;
+}
+
+.type {
+  font-family: "Fjalla One";
+}
+
+.select-dropdown {
+  margin-left: 10px;
+  font-family: "Fjalla One";
+  width: auto;
+  /* height: 30px; */
+  position: relative;
+  background-color: #e6e6e6;
+  border-radius: 2px;
+  position: relative;
+  background-color: #e6e6e6;
+  max-width: 120px;
+}
+.select-dropdown-options {
+  font-size: 1rem;
+  font-weight: 200;
+  max-width: 100%;
+  padding: 8px 24px 8px 10px;
+  border: none;
+  background-color: transparent;
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  appearance: none !important;
+  text-indent: 0;
+}
+
+.select-dropdown-options:active,
+.select-dropdown-options:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.select-dropdown::after {
+  content: " ";
+  position: absolute;
+  top: 50%;
+  margin-top: -2px;
+  right: 8px;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid #aaa;
+}
+
+.title_options {
+  display: flex;
+  align-items: center;
+}
