@@ -1,0 +1,46 @@
+[
+  {
+    "id": "1",
+    "Recipe_name": "Potato Curry",
+    "Ingredients": ["Salt", "pepper", "chilli", "masala"],
+    "Preparation": [
+      "1. do this",
+      "2. do that",
+      "3.marinate this",
+      "4.final mix"
+    ]
+  },
+  {
+    "id": "2",
+    "Recipe_name": "Beef Curry",
+    "Ingredients": ["Salt", "pepper", "Beef", "masala"],
+    "Preparation": [
+      "1. do this",
+      "2. do that",
+      "3.marinate this",
+      "4.final mix"
+    ]
+  },
+  {
+    "id": "3",
+    "Recipe_name": "Gulabjamun Curry",
+    "Ingredients": ["Salt", "pepper", "Potato", "masala"],
+    "Preparation": [
+      "1. do this",
+      "2. do that",
+      "3.marinate this",
+      "4.final mix"
+    ]
+  },
+  {
+    "id": "4",
+    "Recipe_name": "Fish Curry",
+    "Ingredients": ["Salt", "pepper", "Fish", "masala"],
+    "Preparation": [
+      "1. do this",
+      "2. do that",
+      "3.marinate this",
+      "4.final mix"
+    ]
+  }
+]

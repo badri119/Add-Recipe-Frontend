@@ -7,7 +7,6 @@
   width: 70%;
   display: flex;
 } */
-
 .inputclass {
   display: block;
   width: 60%;
@@ -72,12 +71,22 @@ input:focus {
   color: white;
   border: 1px solid rgba(0, 0, 0, 1);
 }
+.maincontainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  position: relative;
+  width: 100vh;
+}
 
 .postcontainer {
   width: 60%;
   border-radius: 5px;
   background-color: #f8f4e5;
   padding: 20px;
+  position: relative;
 }
 
 .type {
@@ -131,4 +140,20 @@ input:focus {
 .title_options {
   display: flex;
   align-items: center;
+}
+
+.backhomecontainer {
+  padding-left: 20px;
+  top: 10px;
+  display: flex;
+  position: relative;
+}
+
+.closearrow {
+  float: right;
+  transition: transform 0.5s;
+}
+
+.closearrow:hover {
+  transform: scale(1.4);
 }

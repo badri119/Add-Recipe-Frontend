@@ -6,14 +6,21 @@ h2 {
   text-align: center;
 }
 
-/* .containersignup {
-  border-radius: 5px;
-  background-color: #f2f2f2;
-  padding: 20px;
-  max-width: 50%;
+.signup {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
-} */
+  position: relative;
+  width: 100vh;
+}
+
+.signupcontainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f12711;
+  background: -webkit-linear-gradient(to right, #f5af19, #f12711);
+  background: linear-gradient(to right, #f5af19, #f12711);
+}
