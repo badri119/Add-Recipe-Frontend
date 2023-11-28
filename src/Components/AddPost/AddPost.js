@@ -1,6 +1,7 @@
 import React from "react";
 import "./AddPost.css";
 import { AiFillCloseCircle } from "react-icons/ai";
+import axios from "axios";
 
 const AddPost = ({ close }) => {
   return (

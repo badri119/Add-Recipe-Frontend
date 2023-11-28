@@ -4,6 +4,7 @@ import Dummy from "../../dummy.json";
 import { Link } from "react-router-dom";
 import Modal from "react-modal";
 import AddPost from "../AddPost/AddPost";
+import Axios from "axios";
 
 const Home = () => {
   const customStyles = {
@@ -52,6 +53,12 @@ const Home = () => {
 
     setFilteredRecipes(temp);
     setSearchInput(event.target.value);
+  };
+
+  const getrecipes = () => {
+    Axios.get("http://localhost:3000/recipes").then((response) => {
+      console.log(response);
+    });
   };
 
   return (

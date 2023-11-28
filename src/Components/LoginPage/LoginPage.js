@@ -1,17 +1,32 @@
 import React, { useState } from "react";
 import "./loginPage.css";
 import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Loginpage = () => {
   const [email, setEmail] = useState("");
-  const [pass, setPass] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(email);
-    console.log(pass);
-    navigate("/home");
+
+    try {
+      const response = await axios.post("http://localhost:3001/signin", {
+        email,
+        password,
+      });
+
+      if (response.status === 200) {
+        navigate("/home");
+      } else {
+        console.error("Login failed");
+      }
+    } catch (error) {
+      console.error("Login error:", error.message);
+      setError(error.response.data.message);
+    }
   };
   return (
     <div className="logincontainer">
@@ -19,15 +34,15 @@ const Loginpage = () => {
         <div className="title">
           <h1>Welcome to Add Recipe</h1>
           <p className="meaning">
-            A place where you can post and view recipes from all around the
-            world!
+            A website dedicated to culinary delights accessible to people
+            worldwide!
           </p>
         </div>
         <div className="container">
           <form onSubmit={handleSubmit} action="">
             <h3> Please enter your Email and Password</h3>
             <label for="email">Email ID:</label>
-            <br></br>
+
             <input
               className="inputbox"
               type="email"
@@ -36,27 +51,24 @@ const Loginpage = () => {
               required
               onChange={(e) => setEmail(e.target.value)}
             ></input>
-            <br></br>
-            <br></br>
+
             <label for="password">Password:</label>
-            <br />
+
             <input
               className="inputbox"
               type="password"
               placeholder="Enter Password"
               name="psw"
-              value={pass}
+              value={password}
               required
-              onChange={(e) => setPass(e.target.value)}
+              onChange={(e) => setPassword(e.target.value)}
             ></input>
-            <br></br>
-            <br></br>
+            {error && <p className="error-message">Error: {error}</p>}
             <div className="buttonmain">
               <button type="submit">Login</button>
             </div>
           </form>
 
-          <br />
           <Link to="/signup" className="signupmain">
             {" "}
             If you are a new user, Signup here!

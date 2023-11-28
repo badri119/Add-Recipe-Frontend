@@ -23,7 +23,11 @@ button {
 }
 
 button:hover {
-  transform: scale(1.2);
+  color: black;
+  background: -webkit-linear-gradient(to left, #f5af19, #f12711);
+  background: linear-gradient(to left, #f5af19, #f12711);
+  cursor: pointer;
+  transition: 0.5s;
 }
 h4 {
   text-align: center;
@@ -65,6 +69,7 @@ textarea {
 
 .meaning {
   font-weight: 600;
+  font-size: larger;
 }
 
 label {
@@ -83,4 +88,10 @@ label {
   background: #f12711;
   background: -webkit-linear-gradient(to right, #f5af19, #f12711);
   background: linear-gradient(to right, #f5af19, #f12711);
+}
+
+.error-message {
+  font-weight: bold;
+  text-align: center;
+  color: #f12711;
 }
