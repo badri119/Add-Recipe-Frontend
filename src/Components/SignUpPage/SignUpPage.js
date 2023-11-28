@@ -11,6 +11,8 @@ const SignUpPage = () => {
   const [pass, setPass] = useState("");
   const [cpass, confirmPass] = useState("");
   const [validpass, setValidPass] = useState(false);
+  const [error, setError] = useState(null);
+  const [success, setSuccess] = useState(null);
 
   function handleSetPassword(event) {
     setPass(event.target.value);
@@ -33,13 +35,21 @@ const SignUpPage = () => {
           password: pass,
           email: email,
         })
+        .then(function (response) {
+          if (response.data) {
+            setSuccess(response.data.message);
+            setError(null);
+            setName("");
+            setEmail("");
+            setPass("");
+            confirmPass("");
+          }
+        })
         .catch(function (error) {
           if (error.response) {
-            // The request was made and the server responded with a status code
-            // that falls out of the range of 2xx
-            console.log(error.response.data.message);
-            console.log(error.response.status);
-            console.log(error.response.headers);
+            console.error("Signup error:", error.message);
+            setError(error.response.data.message);
+            setSuccess(null);
           }
         });
     }
@@ -88,6 +98,8 @@ const SignUpPage = () => {
               value={cpass}
               onChange={handlesetMatchPassword}
             ></input>
+            {success && <p className="success-message">Success: {success}</p>}
+            {error && <p className="error-message">Error: {error}</p>}
             <PasswordChecklist
               rules={["capital", "match", "specialChar", "minLength", "number"]}
               minLength={8}
