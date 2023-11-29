@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./SignUpPage.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import PasswordChecklist from "react-password-checklist";
 import axios from "axios";
@@ -13,6 +13,7 @@ const SignUpPage = () => {
   const [validpass, setValidPass] = useState(false);
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
+  const navigate = useNavigate();
 
   function handleSetPassword(event) {
     setPass(event.target.value);
@@ -35,16 +36,11 @@ const SignUpPage = () => {
           password: pass,
           email: email,
         })
-        .then(function (response) {
-          if (response.data) {
-            setSuccess(response.data.message);
-            setError(null);
-            setName("");
-            setEmail("");
-            setPass("");
-            confirmPass("");
-          }
+
+        .then(function () {
+          navigate("/");
         })
+
         .catch(function (error) {
           if (error.response) {
             console.error("Signup error:", error.message);
@@ -98,10 +94,12 @@ const SignUpPage = () => {
               value={cpass}
               onChange={handlesetMatchPassword}
             ></input>
-            <p className="success-message">
-              {success}, please continue to Login
-            </p>
-            <p className="error-message">{error}</p>
+            {success && (
+              <p className="success-message">
+                {success}, please continue to Login
+              </p>
+            )}
+            {error && <p className="error-message">{error}</p>}
             <PasswordChecklist
               rules={["capital", "match", "specialChar", "minLength", "number"]}
               minLength={8}

@@ -10,7 +10,7 @@
 }
 .box:hover input {
   width: 450px;
-  background: #3b3640;
+  background: white;
   border-radius: 10px;
 }
 .searchbox {
@@ -25,6 +25,10 @@
   color: #ffd52d;
   outline: none;
   transition: 0.5s;
+}
+
+.searchbox::placeholder {
+  color: black;
 }
 .card {
   margin: 3px;
