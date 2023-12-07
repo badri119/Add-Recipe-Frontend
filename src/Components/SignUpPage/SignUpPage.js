@@ -94,11 +94,6 @@ const SignUpPage = () => {
               value={cpass}
               onChange={handlesetMatchPassword}
             ></input>
-            {success && (
-              <p className="success-message">
-                {success}, please continue to Login
-              </p>
-            )}
             {error && <p className="error-message">{error}</p>}
             <PasswordChecklist
               rules={["capital", "match", "specialChar", "minLength", "number"]}

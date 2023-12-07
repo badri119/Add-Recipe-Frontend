@@ -29,9 +29,3 @@ h2 {
   display: flex;
   flex-direction: column;
 }
-
-.success-message {
-  font-weight: bold;
-  text-align: center;
-  color: green;
-}
