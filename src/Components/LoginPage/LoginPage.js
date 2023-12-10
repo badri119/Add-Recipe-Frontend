@@ -3,10 +3,11 @@ import "./loginPage.css";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const Loginpage = () => {
+const Loginpage = ({ setUserId }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
+
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -19,6 +20,11 @@ const Loginpage = () => {
       });
 
       if (response.status === 200) {
+        const temp = response.data.userid;
+        setUserId(temp);
+
+        // store user id in a state variable
+        //
         navigate("/home");
       } else {
         console.error("Login failed");
