@@ -2,14 +2,12 @@
 Built using React, Express.js and Firebase
 
 # Screenshots:
-<img width="1106" alt="Screenshot 2023-10-25 at 22 51 18" src="https://github.com/badri119/Add-Recipe-Frontend/assets/90651004/33194fa4-b6c2-4dd3-b9b4-6e02199cef26">
-
-
-<img width="1440" alt="Screenshot 2023-10-25 at 22 51 37" src="https://github.com/badri119/Add-Recipe-Frontend/assets/90651004/08325aac-7475-4656-80d4-7d306d6623a1">
+<img width="1438" alt="Screenshot 2023-12-24 at 21 00 18" src="https://github.com/badri119/Add-Recipe-Frontend/assets/90651004/a49c5706-231d-4561-b789-ebdab38f6eb7">
 
 
 
-<img width="1440" alt="Screenshot 2023-10-25 at 22 51 57" src="https://github.com/badri119/Add-Recipe-Frontend/assets/90651004/321773e4-c676-48e0-980f-1d0a58ca5388">
+<img width="501" alt="Screenshot 2023-12-24 at 21 00 44" src="https://github.com/badri119/Add-Recipe-Frontend/assets/90651004/8faa3e15-ea7b-4e75-8790-8852db219977">
+
 
 
 
