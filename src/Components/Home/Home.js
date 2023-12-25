@@ -1,11 +1,18 @@
 import React, { useState, useEffect } from "react";
 import "./Home.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Modal from "react-modal";
 import AddPost from "../AddPost/AddPost";
 import axios from "axios";
 
-const Home = ({ userid }) => {
+const Home = ({
+  userid,
+  token,
+  setToken,
+  username,
+  setUserId,
+  setUserName,
+}) => {
   const customStyles = {
     content: {
       top: "50%",
@@ -23,17 +30,22 @@ const Home = ({ userid }) => {
   const [modalIsOpen, setIsOpen] = useState(false);
   const [error, setError] = useState();
   const [recipes, setRecipes] = useState();
+  const [editedRecipe, setEditedRecipe] = useState({
+    recipename: "",
+    type: "",
+    ingredients: "",
+    preparation: "",
+  });
+  const [isEditing, setIsEditing] = useState(false);
+  const navigate = useNavigate();
 
-  function openModal() {
+  const openModal = () => {
     setIsOpen(true);
-  }
-  function closeModal() {
+    setIsEditing(false);
+  };
+  const closeModal = () => {
     setIsOpen(false);
-  }
-  // Filter recipes based on the search input
-  // before searching recipes = 10 filtered recipes = 10,
-  // After searching recipes = 10 filtered recipes = 1
-  // After clear, recipes = 10, filtered recipes = 10
+  };
 
   const handleSearchInputChange = (event) => {
     setSearchInput(event.target.value);
@@ -52,12 +64,14 @@ const Home = ({ userid }) => {
       if (recipe_present) relevant = recipe_present;
 
       // searching for ingredients
-      recipe.ingredients.map(function (ingred) {
+      recipe.ingredients.map((ingred) => {
         const included = ingred
           .toLowerCase()
           .includes(event.target.value.toLowerCase());
         if (included) relevant = included;
       });
+      //searching for type
+
       return relevant;
     });
 
@@ -66,60 +80,121 @@ const Home = ({ userid }) => {
 
   // API call for adding a Recipe
   const addRecipe = async (newRecipeData) => {
-    console.log(newRecipeData);
-    console.log(userid);
+    // console.log(userid);
     newRecipeData.userid = userid;
+    newRecipeData.username = username;
 
     try {
       const response = await axios.post(
         "http://localhost:3001/recipes/post",
-        newRecipeData
+        newRecipeData,
+        { headers: { Auth_Token: token } }
       );
-      console.log(response.data);
+      // console.log(username);
+      // console.log(response.data.userid);
+
+      // console.log(response.data);
+      const recipeUserName = response.data.username;
+      // console.log(recipeUserName);
+      newRecipeData._id = response.data._id;
       const temp = [...filteredRecipes, newRecipeData];
-      console.log(temp);
+      // console.log(temp);
       //Update the reciepes in the home dashboard after a recpe is added
       setFilteredRecipes(temp);
 
       closeModal();
     } catch (error) {
-      console.log("Error adding recipe:", error);
+      // console.log("Error adding recipe:", error);
+      if (error.response.status === 401) {
+        // console.log(error.response.status);
+        navigate("/");
+        return;
+      }
     }
   };
 
-  // Api Call for deleteing a Recipe
+  const editRecipebutton = (recipe) => {
+    openModal();
+    // store this recipe in a state
+    setEditedRecipe(recipe);
+    setIsEditing(true);
+  };
+  // Pass this state to AddPost Component
+
+  // API Call for deleteing a Recipe
   const deleteRecipe = async (recipeId) => {
-    console.log(recipeId);
     try {
       const response = await axios.delete(
-        `http://localhost:3001/recipes/${recipeId}`
+        `http://localhost:3001/recipes/${recipeId}`,
+        {
+          headers: { Auth_Token: token },
+        }
       );
-      console.log(response.data);
+      // console.log(response.data);
 
-      // Update the filtered recipes after deletion
       const updatedRecipes = filteredRecipes.filter(
         (recipe) => recipe._id !== recipeId
       );
       setFilteredRecipes(updatedRecipes);
     } catch (error) {
       console.log("Error deleting recipe:", error);
+      if (error.response.status === 401) {
+        // console.log(error.response.status);
+        navigate("/");
+        return;
+      }
     }
   };
 
   useEffect(() => {
     const getRecipe = async () => {
       try {
-        const response = await axios.get("http://localhost:3001/recipes");
-        console.log(response.data);
+        const response = await axios.get("http://localhost:3001/recipes", {
+          headers: { Auth_Token: token },
+        });
+        // console.log(response.data);
         setRecipes(response.data);
         setFilteredRecipes(response.data);
+        // console.log(token);
       } catch (error) {
+        if (error.response.status === 401) {
+          // console.log(error.response);
+          navigate("/");
+          return;
+        }
         console.error("Error getting recipes", error.message);
         setError(error.response.data.message);
       }
     };
-    getRecipe();
-  }, []);
+    if (token) {
+      getRecipe();
+    }
+    const localtoken = localStorage.getItem("jsonwebtoken");
+    const userids = localStorage.getItem("userid");
+    const recipeUserName = localStorage.getItem("username");
+    console.log(localtoken);
+    if (localtoken) {
+      setToken(localtoken);
+    }
+    if (userids) {
+      setUserId(userids);
+    }
+    if (recipeUserName) {
+      setUserName(recipeUserName);
+    }
+  }, [token, navigate, setToken]);
+
+  //logout functionality
+  const logout = () => {
+    localStorage.removeItem("jsonwebtoken");
+    localStorage.removeItem("userid");
+    localStorage.removeItem("username");
+    setToken("");
+    navigate("/");
+  };
+
+  //capitalize first letter
+  // const capitalize = name[0].toUpperCase() + name.substring(1);
 
   return (
     <div className="homegradient">
@@ -128,16 +203,23 @@ const Home = ({ userid }) => {
           <li>
             <a onClick={openModal}> Add a Recipe</a>
             <Modal
+              ariaHideApp={false}
               isOpen={modalIsOpen}
               onRequestClose={closeModal}
               contentLabel="Example Modal"
               style={customStyles}
             >
-              <AddPost close={closeModal} addRecipe={addRecipe} />
+              <AddPost
+                editedRecipe={editedRecipe}
+                close={closeModal}
+                addRecipe={addRecipe}
+                isEditing={isEditing}
+                token={token}
+              />
             </Modal>
           </li>
           <li>
-            <Link href="">Logout</Link>
+            <Link onClick={logout}>Logout</Link>
           </li>
         </ul>
       </div>
@@ -153,11 +235,30 @@ const Home = ({ userid }) => {
         {filteredRecipes &&
           filteredRecipes.map((recipe) => (
             <div className="card" key={recipe._id}>
-              <h4 className="recipename">{recipe.recipename}</h4>
-              <p> {recipe.ingredients}</p>
-              <p>{recipe.preparation}</p>
-              <div className="deletebutton">
-                <button onClick={() => deleteRecipe(recipe._id)}>Delete</button>
+              <div className="card-content">
+                <div className="recipe-header">
+                  <h4 className="recipename">{recipe.recipename}</h4>
+                  <h4 className="author">Recipe by {recipe.username} </h4>
+                </div>
+                <p className="ingredients">{recipe.type}</p>
+                <p className="ingredients">{recipe.ingredients}</p>
+                <p className="preparation">{recipe.preparation}</p>
+                {recipe.userid === userid && (
+                  <div className="deletebutton">
+                    <button
+                      className="fade"
+                      onClick={() => editRecipebutton(recipe)}
+                    >
+                      Edit
+                    </button>
+                    <button
+                      className="fade"
+                      onClick={() => deleteRecipe(recipe._id)}
+                    >
+                      Delete
+                    </button>
+                  </div>
+                )}
               </div>
             </div>
           ))}

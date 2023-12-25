@@ -3,7 +3,7 @@ import "./loginPage.css";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const Loginpage = ({ setUserId }) => {
+const Loginpage = ({ setUserId, setToken, setUserName }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
@@ -21,10 +21,17 @@ const Loginpage = ({ setUserId }) => {
 
       if (response.status === 200) {
         const temp = response.data.userid;
-        setUserId(temp);
+        const usertoken = response.data.Auth_Token;
+        const username = response.data.username;
 
-        // store user id in a state variable
-        //
+        console.log(response.data);
+        setToken(usertoken);
+        setUserId(temp);
+        setUserName(username);
+        localStorage.setItem("jsonwebtoken", usertoken);
+        localStorage.setItem("userid", temp);
+        localStorage.setItem("username", username);
+
         navigate("/home");
       } else {
         console.error("Login failed");
@@ -46,9 +53,8 @@ const Loginpage = ({ setUserId }) => {
         </div>
         <div className="container">
           <form onSubmit={handleSubmit} action="">
-            <h3> Please enter your Email and Password</h3>
-            <label for="email">Email ID:</label>
-
+            <h3>Please enter your Email and Password</h3>
+            <label htmlFor="email">Email ID:</label>
             <input
               className="inputbox"
               type="email"
@@ -56,10 +62,8 @@ const Loginpage = ({ setUserId }) => {
               value={email}
               required
               onChange={(e) => setEmail(e.target.value)}
-            ></input>
-
-            <label for="password">Password:</label>
-
+            />
+            <label htmlFor="password">Password:</label>
             <input
               className="inputbox"
               type="password"
@@ -68,19 +72,20 @@ const Loginpage = ({ setUserId }) => {
               value={password}
               required
               onChange={(e) => setPassword(e.target.value)}
-            ></input>
+            />
             {error && <p className="error-message">{error}</p>}
             <div className="buttonmain">
-              <button type="submit">Login</button>
+              <button className="loginbutton" type="submit">
+                Login
+              </button>
             </div>
           </form>
-
           <Link to="/signup" className="signupmain">
-            {" "}
             If you are a new user, Signup here!
           </Link>
         </div>
       </div>
+      <div className="background-image"></div>
     </div>
   );
 };

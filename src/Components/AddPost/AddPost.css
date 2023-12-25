@@ -25,7 +25,7 @@
 }
 
 input:focus {
-  border-bottom: 5px solid #ffa580;
+  border-bottom: 5px solid black;
 }
 
 .ingrdientsinputclass {
