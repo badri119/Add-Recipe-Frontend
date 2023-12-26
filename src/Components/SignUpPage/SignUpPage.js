@@ -37,7 +37,7 @@ const SignUpPage = () => {
           password: pass,
           email: email,
         });
-        console.log(response.data);
+        // console.log(response.data);
 
         navigate("/");
       }

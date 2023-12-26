@@ -1,14 +1,19 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@700&family=Oswald&display=swap");
+
 .box {
   position: relative;
   display: flex;
   justify-content: center;
-  margin-top: 20px;
+  background-image: url("../../../public/veggies.jpeg");
+  width: 100%;
+  height: 150px;
+  background-size: cover;
+  background-position-y: center;
 }
 .searchbox {
   padding: 10px;
   width: 150px;
   height: 80px;
-  background: none;
   border: 4px solid #ccc;
   border-radius: 30px;
   box-sizing: border-box;
@@ -16,6 +21,8 @@
   color: black;
   outline: none;
   transition: 0.5s;
+  margin-top: 30px;
+  background: white;
 }
 
 .searchbox:hover {
@@ -85,9 +92,11 @@ ul {
 ul li a {
   text-decoration: none;
   color: black;
-  font-size: 20px;
+  font-size: 25px;
   font-weight: 700;
   transition: all 600ms;
+  font-family: "Lato", sans-serif;
+  font-family: "Oswald", sans-serif;
 }
 
 ul li a:hover {

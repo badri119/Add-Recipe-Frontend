@@ -24,7 +24,7 @@ const Loginpage = ({ setUserId, setToken, setUserName }) => {
         const usertoken = response.data.Auth_Token;
         const username = response.data.username;
 
-        console.log(response.data);
+        // console.log(response.data);
         setToken(usertoken);
         setUserId(temp);
         setUserName(username);

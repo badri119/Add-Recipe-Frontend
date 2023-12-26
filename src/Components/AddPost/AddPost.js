@@ -4,7 +4,16 @@ import { AiFillCloseCircle } from "react-icons/ai";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const AddPost = ({ close, addRecipe, editedRecipe, isEditing, token }) => {
+const AddPost = ({
+  close,
+  addRecipe,
+  editedRecipe,
+  isEditing,
+  token,
+  filteredRecipes,
+  setFilteredRecipes,
+  setAllRecipes,
+}) => {
   const [formData, setFormData] = useState({
     recipename: "",
     type: "",
@@ -20,8 +29,8 @@ const AddPost = ({ close, addRecipe, editedRecipe, isEditing, token }) => {
     const { name, value } = e.target;
     // console.log(name, value);
     setFormData((prevFormData) => {
-      // console.log(prevFormData);
-      // console.log(name, value);
+      console.log(prevFormData);
+      console.log(name, value);
       return { ...prevFormData, [name]: value };
     });
   };
@@ -29,7 +38,7 @@ const AddPost = ({ close, addRecipe, editedRecipe, isEditing, token }) => {
   //API for calling Edit Recipe
   const editRecipe = async (recipeId, updatedData) => {
     try {
-      console.log(token);
+      // console.log(token);
       const editedResponse = await axios.patch(
         `http://localhost:3001/recipes/${recipeId}`,
         updatedData,
@@ -37,12 +46,22 @@ const AddPost = ({ close, addRecipe, editedRecipe, isEditing, token }) => {
           headers: { Auth_Token: token },
         }
       );
-      console.log(editedResponse.data);
+      const updatedRecipe = editedResponse.data;
+      const updatedRecipes = filteredRecipes.map((recipe) => {
+        if (recipe._id === recipeId) {
+          return updatedRecipe;
+        } else {
+          return recipe;
+        }
+      });
+      setFilteredRecipes(updatedRecipes);
+      setAllRecipes(updatedRecipes);
+      // console.log(editedResponse.data);
       close();
     } catch (error) {
-      console.log("Error updating recipe:", error);
+      // console.log("Error updating recipe:", error);
       if (error.response.status === 401) {
-        console.log(error.response.status);
+        // console.log(error.response.status);
         navigate("/");
         return;
       }
@@ -50,8 +69,8 @@ const AddPost = ({ close, addRecipe, editedRecipe, isEditing, token }) => {
   };
 
   useEffect(() => {
-    console.log(isEditing);
-    console.log(formData);
+    // console.log(isEditing);
+    // console.log(formData);
     if (isEditing) {
       setFormData(editedRecipe);
     } else {

@@ -26,10 +26,10 @@ const Home = ({
     },
   };
   const [searchInput, setSearchInput] = useState("");
-  const [filteredRecipes, setFilteredRecipes] = useState();
+  const [filteredRecipes, setFilteredRecipes] = useState([]);
   const [modalIsOpen, setIsOpen] = useState(false);
   const [error, setError] = useState();
-  const [recipes, setRecipes] = useState();
+  const [allRecipes, setAllRecipes] = useState([]);
   const [editedRecipe, setEditedRecipe] = useState({
     recipename: "",
     type: "",
@@ -49,12 +49,11 @@ const Home = ({
 
   const handleSearchInputChange = (event) => {
     setSearchInput(event.target.value);
+    // console.log(searchInput);
+    console.log(allRecipes);
+    console.log(filteredRecipes);
 
-    if (!event.target.value) {
-      setFilteredRecipes(recipes);
-      return;
-    }
-    const temp = recipes.filter((recipe) => {
+    const temp = allRecipes.filter((recipe) => {
       let relevant = false;
 
       // searching for recipe name
@@ -62,6 +61,9 @@ const Home = ({
         .toLowerCase()
         .includes(event.target.value.toLowerCase());
       if (recipe_present) relevant = recipe_present;
+      // console.log(recipe_present);
+
+      console.log(recipe.ingredients);
 
       // searching for ingredients
       recipe.ingredients.map((ingred) => {
@@ -69,8 +71,8 @@ const Home = ({
           .toLowerCase()
           .includes(event.target.value.toLowerCase());
         if (included) relevant = included;
+        // console.log(included);
       });
-      //searching for type
 
       return relevant;
     });
@@ -93,14 +95,24 @@ const Home = ({
       // console.log(username);
       // console.log(response.data.userid);
 
-      // console.log(response.data);
+      // const newData = console.log(response.data);
       const recipeUserName = response.data.username;
+      console.log(response.data);
+
+      const newData = response.data;
+
       // console.log(recipeUserName);
       newRecipeData._id = response.data._id;
-      const temp = [...filteredRecipes, newRecipeData];
+      const temp = [...filteredRecipes, newData];
+
+      // console.log(filteredRecipes);
+      console.log(newRecipeData);
       // console.log(temp);
-      //Update the reciepes in the home dashboard after a recpe is added
+      // console.log(temp);
+      //Update the reciepes in the home dashboard after a recipe is added
       setFilteredRecipes(temp);
+      setAllRecipes(temp);
+      // console.log(filteredRecipes);
 
       closeModal();
     } catch (error) {
@@ -136,8 +148,9 @@ const Home = ({
         (recipe) => recipe._id !== recipeId
       );
       setFilteredRecipes(updatedRecipes);
+      setAllRecipes(updatedRecipes);
     } catch (error) {
-      console.log("Error deleting recipe:", error);
+      // console.log("Error deleting recipe:", error);
       if (error.response.status === 401) {
         // console.log(error.response.status);
         navigate("/");
@@ -149,11 +162,12 @@ const Home = ({
   useEffect(() => {
     const getRecipe = async () => {
       try {
+        //Getting Recipes from backend
         const response = await axios.get("http://localhost:3001/recipes", {
           headers: { Auth_Token: token },
         });
         // console.log(response.data);
-        setRecipes(response.data);
+        setAllRecipes(response.data);
         setFilteredRecipes(response.data);
         // console.log(token);
       } catch (error) {
@@ -172,7 +186,7 @@ const Home = ({
     const localtoken = localStorage.getItem("jsonwebtoken");
     const userids = localStorage.getItem("userid");
     const recipeUserName = localStorage.getItem("username");
-    console.log(localtoken);
+    // console.log(localtoken);
     if (localtoken) {
       setToken(localtoken);
     }
@@ -190,11 +204,17 @@ const Home = ({
     localStorage.removeItem("userid");
     localStorage.removeItem("username");
     setToken("");
+    setUserId("");
+    setUserName("");
     navigate("/");
   };
 
-  //capitalize first letter
-  // const capitalize = name[0].toUpperCase() + name.substring(1);
+  useEffect(() => {
+    // filtered recipes array -> do operations on this to show searched results
+    console.log("This is Filtered Recipes", filteredRecipes);
+    // // original recipes array (List of all recipes)
+    // console.log("This is Recipes", allRecipes);
+  }, [filteredRecipes, allRecipes]);
 
   return (
     <div className="homegradient">
@@ -215,6 +235,9 @@ const Home = ({
                 addRecipe={addRecipe}
                 isEditing={isEditing}
                 token={token}
+                filteredRecipes={filteredRecipes}
+                setFilteredRecipes={setFilteredRecipes}
+                setAllRecipes={setAllRecipes}
               />
             </Modal>
           </li>
