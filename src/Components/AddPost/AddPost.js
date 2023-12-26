@@ -29,8 +29,8 @@ const AddPost = ({
     const { name, value } = e.target;
     // console.log(name, value);
     setFormData((prevFormData) => {
-      console.log(prevFormData);
-      console.log(name, value);
+      // console.log(prevFormData);
+      // console.log(name, value);
       return { ...prevFormData, [name]: value };
     });
   };

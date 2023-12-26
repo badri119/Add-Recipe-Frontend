@@ -50,8 +50,8 @@ const Home = ({
   const handleSearchInputChange = (event) => {
     setSearchInput(event.target.value);
     // console.log(searchInput);
-    console.log(allRecipes);
-    console.log(filteredRecipes);
+    // console.log(allRecipes);
+    // console.log(filteredRecipes);
 
     const temp = allRecipes.filter((recipe) => {
       let relevant = false;
@@ -63,7 +63,7 @@ const Home = ({
       if (recipe_present) relevant = recipe_present;
       // console.log(recipe_present);
 
-      console.log(recipe.ingredients);
+      // console.log(recipe.ingredients);
 
       // searching for ingredients
       recipe.ingredients.map((ingred) => {
@@ -97,7 +97,7 @@ const Home = ({
 
       // const newData = console.log(response.data);
       const recipeUserName = response.data.username;
-      console.log(response.data);
+      // console.log(response.data);
 
       const newData = response.data;
 
@@ -106,7 +106,7 @@ const Home = ({
       const temp = [...filteredRecipes, newData];
 
       // console.log(filteredRecipes);
-      console.log(newRecipeData);
+      // console.log(newRecipeData);
       // console.log(temp);
       // console.log(temp);
       //Update the reciepes in the home dashboard after a recipe is added
@@ -211,7 +211,7 @@ const Home = ({
 
   useEffect(() => {
     // filtered recipes array -> do operations on this to show searched results
-    console.log("This is Filtered Recipes", filteredRecipes);
+    // console.log("This is Filtered Recipes", filteredRecipes);
     // // original recipes array (List of all recipes)
     // console.log("This is Recipes", allRecipes);
   }, [filteredRecipes, allRecipes]);
