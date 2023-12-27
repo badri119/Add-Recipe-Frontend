@@ -1,6 +1,6 @@
 # AddRecipe: A website dedicated to culinary delights accessible to people worldwide
 Built using React, Express.js and MongoDB
-# Backend Repo: Backend Repo: https://github.com/badri119/Add-Recipe-Backend
+# Backend Repo: https://github.com/badri119/Add-Recipe-Backend
 
 # Screenshots:
 <img width="1438" alt="Screenshot 2023-12-24 at 21 00 18" src="https://github.com/badri119/Add-Recipe-Frontend/assets/90651004/a49c5706-231d-4561-b789-ebdab38f6eb7">
