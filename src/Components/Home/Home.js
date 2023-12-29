@@ -221,7 +221,10 @@ const Home = ({
       <div className="topbar">
         <ul>
           <li>
-            <a onClick={openModal}> Add a Recipe</a>
+            <a onClick={openModal} className="add-recipe-btn">
+              {" "}
+              Add a Recipe
+            </a>
             <Modal
               ariaHideApp={false}
               isOpen={modalIsOpen}
@@ -242,7 +245,9 @@ const Home = ({
             </Modal>
           </li>
           <li>
-            <Link onClick={logout}>Logout</Link>
+            <Link onClick={logout} class="logout-btn">
+              Logout
+            </Link>
           </li>
         </ul>
       </div>

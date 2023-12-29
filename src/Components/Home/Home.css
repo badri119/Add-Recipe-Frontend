@@ -81,7 +81,7 @@ ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  overflow: hidden;
+  /* overflow: hidden; */
   display: flex;
   justify-content: space-between;
   padding-left: 10px;
@@ -99,17 +99,32 @@ ul li a {
   font-family: "Oswald", sans-serif;
 }
 
-ul li a:hover {
-  color: #f12711;
-  border-radius: 3px;
+.topbar {
+  height: 60px;
+  background-color: #34495e;
+  display: flex;
+  align-items: center;
+}
+
+.add-recipe-btn {
+  padding: 5px 15px;
+  border-radius: 5px;
+  background-color: #e74c3c;
+}
+
+.add-recipe-btn:hover {
+  background-color: #c0392b;
   cursor: pointer;
 }
 
-.topbar {
-  height: 50px;
-  background-color: #f5f5f5;
-  display: flex;
-  align-items: center;
+.logout-btn {
+  padding: 5px 15px;
+  border-radius: 5px;
+  background-color: #2ecc71;
+}
+
+.logout-btn:hover {
+  background-color: #27ae60;
 }
 
 .homegradient {
