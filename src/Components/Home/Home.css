@@ -128,7 +128,7 @@ ul li a {
 }
 
 .homegradient {
-  background-color: #f5f5f5;
+  background: linear-gradient(120deg, #78b4a9, #e4f1d2);
   min-height: 100vh;
 }
 
