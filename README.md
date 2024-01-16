@@ -59,7 +59,7 @@ https://github.com/badri119/Add-Recipe-Backend
    - Create a .env file in the root of your project
    - Add the MongoDB connection URL and any other environment variables needed.
      - Example or refer .env.example in the backend repository:
-       MONGODB_URI=your_mongodb_connection_url
-       TOKEN_SECRET= your_secret_token_key
+       - - MONGODB_URI=your_mongodb_connection_url
+       - - TOKEN_SECRET= your_secret_token_key
 4. Run npm start for the server to boot up
 5. Run npm start for for the client to boot up
