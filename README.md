@@ -16,7 +16,23 @@
 - Credientials are encrypted on a database level
 - Ability for users to View, Add, Delete and Edit recipes based on their preference
 - Mobile Responsive
-- Upcoming features will include a notes section where users can write custom notes for reference and ability to favorite a recipe
+
+# Future Improvements:
+
+- Upcoming features will include a notes section where users can write custom notes for reference
+- Favorite a recipe
+
+# API endpoints:
+
+| Endpoint      | Method | Description              |
+| ------------- | ------ | ------------------------ |
+| /recipes      | GET    | Get all Recipes          |
+| /signup       | POST   | Sign up new User         |
+| /signin       | POST   | Signs in a User          |
+| /recipes/post | POST   | Adds a new Recipe        |
+| /recipes/:id  | GET    | Gets a specifc Recipe    |
+| /recipes/:id  | PATCH  | Edits a specifc Recipe   |
+| /recipes/:id  | Delete | Deletes a specifc Recipe |
 
 # How to start the project:
 
