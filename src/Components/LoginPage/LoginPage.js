@@ -80,9 +80,13 @@ const Loginpage = ({ setUserId, setToken, setUserName }) => {
               </button>
             </div>
           </form>
-          <Link to="/signup" className="signupmain">
-            If you are a new user, Signup here!
-          </Link>
+          <p className="signupmain">
+            If you are a new user,&nbsp;
+            <Link to="/signup" className="redirect-effect">
+              {" "}
+              Signup here!
+            </Link>
+          </p>
         </div>
       </div>
       <div className="background-image"></div>

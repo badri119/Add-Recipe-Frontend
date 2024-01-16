@@ -122,9 +122,12 @@ const SignUpPage = () => {
               </button>
             </div>
           </form>
-          <Link to="/" className="signupmain">
-            Existing user? Login here!
-          </Link>
+          <p className="signupmain">
+            Existing user?&nbsp;
+            <Link to="/" className="redirect-effect">
+              Login here!
+            </Link>
+          </p>
         </div>
       </div>
       <div className="background-image"></div>

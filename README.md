@@ -1,32 +1,41 @@
 # AddRecipe: A website dedicated to culinary delights accessible to people worldwide
-Built using React, Express.js and MongoDB
+
 # Backend Repo: https://github.com/badri119/Add-Recipe-Backend
 
-# Screenshots:
-<img width="1438" alt="Screenshot 2023-12-24 at 21 00 18" src="https://github.com/badri119/Add-Recipe-Frontend/assets/90651004/a49c5706-231d-4561-b789-ebdab38f6eb7">
+# Technical Details:
 
+- The Application was built using Reactjs, Expressjs, Nodejs and MongoDB
+- Impleneted JWT for secure Authentication
+- Utilized hashing to hash passwword and store in the datbase
+- Used axios to call the APIs in the frontend
+- Implemented Docker for containerizing and deploying the MERN stack application, ensuring consistent environments
 
+# Key Features:
 
-<img width="501" alt="Screenshot 2023-12-24 at 21 00 44" src="https://github.com/badri119/Add-Recipe-Frontend/assets/90651004/8faa3e15-ea7b-4e75-8790-8852db219977">
+- Signin and Signup
+- Credientials are encrypted on a database level
+- Ability for users to View, Add, Delete and Edit recipes based on their preference
+- Mobile Responsive
+- Upcoming features will include a notes section where users can write custom notes for reference and ability to favorite a recipe
 
+# How to start the project:
 
+# Frontend
 
+1. Clone the Frontend Repository and install all the required dependencies using 'npm install'
+2. To run the frontend without backend use 'npm start'.
 
+# Backend
 
-
-
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-use npm i to install all the required dependencies
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
+1. Clone the Backend Repository and install all the required dependencies using 'npm install'
+2. MongoDB Setup:
+   - Make sure MongoDB is installed on your machine or use a cloud-based MongoDB service.
+   - Create a MongoDB database and note its connection URL.
+3. Environment Variables:
+   - Create a .env file in the root of your project
+   - Add the MongoDB connection URL and any other environment variables needed.
+     - Example or refer .env.example in the backend repository:
+       MONGODB_URI=your_mongodb_connection_url
+       TOKEN_SECRET= your_secret_token_key
+4. Run npm start for the server to boot up
+5. Run npm start for for the client to boot up
