@@ -6,8 +6,8 @@
 
 - The Application was built using Reactjs, Expressjs, Nodejs and MongoDB
 - Impleneted JWT for secure Authentication
-- Utilized hashing to hash passwword and store in the datbase
-- Used axios to call the APIs in the frontend
+- Utilized hashing to hash passwword and store in the database
+- Used Axios for API calls
 - Implemented Docker for containerizing and deploying the MERN stack application, ensuring consistent environments
 
 # Key Features:
