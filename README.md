@@ -6,7 +6,7 @@ https://github.com/badri119/Add-Recipe-Backend
 
 # Demo:
 
-<a href="https://youtu.be/5pODLKL0-cU" target="_blank">AddRecipe Tutorial</a>
+<a href="https://youtu.be/pueaYr5BDY8" target="_blank">AddRecipe Tutorial</a>
 
 ![Login](image.png)
 
