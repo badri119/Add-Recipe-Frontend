@@ -6,8 +6,8 @@ https://github.com/badri119/Add-Recipe-Backend
 
 # Demo:
 
-https://www.youtube.com/watch?v=Zumq-NFLVmU
-[![Login](image.png)]
+https://youtu.be/5pODLKL0-cU
+![Login](image.png)
 
 # Technical Details:
 
