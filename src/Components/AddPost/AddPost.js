@@ -146,7 +146,7 @@ const AddPost = ({
             ></textarea>
             <label htmlFor="preparation"></label>
             <textarea
-              className="ingrdientsinputclass"
+              className="prepinputclass"
               type="text"
               id="preparation"
               name="preparation"

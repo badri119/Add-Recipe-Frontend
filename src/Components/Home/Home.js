@@ -166,7 +166,7 @@ const Home = ({
         const response = await axios.get("http://localhost:3001/recipes", {
           headers: { Auth_Token: token },
         });
-        // console.log(response.data);
+        console.log(response.data[0].preparation);
         setAllRecipes(response.data);
         setFilteredRecipes(response.data);
         // console.log(token);
@@ -270,7 +270,14 @@ const Home = ({
                 </div>
                 <p className="ingredients">{recipe.type}</p>
                 <p className="ingredients">{recipe.ingredients}</p>
-                <p className="preparation">{recipe.preparation}</p>
+                <ol className="list-style">
+                  {/* Map over each step in the recipe preparation and render as list item */}
+                  {recipe.preparation.map((step, index) => (
+                    <li className="" key={index}>
+                      {step}
+                    </li>
+                  ))}
+                </ol>
                 {recipe.userid === userid && (
                   <div className="deletebutton">
                     <button

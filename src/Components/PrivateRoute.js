@@ -13,6 +13,11 @@ const PrivateRoute = ({ component: component, ...rest }) => {
         }
       })()}
     </div>
+
+    // Another way to write this is:
+    //This basically means if token exists, navigate to outlet which are the private routes and if token is not present,
+    // navigate to the home page
+    //return token ? <Outlet /> : <Navigate to="/" />;
   );
 };
 
