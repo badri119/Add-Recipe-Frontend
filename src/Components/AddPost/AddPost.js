@@ -152,7 +152,7 @@ const AddPost = ({
               name="preparation"
               value={formData.preparation}
               onChange={handleChange}
-              placeholder="Type your preparation steps here.."
+              placeholder="Use commas to separate your steps and start the next step on a new line."
               required
             ></textarea>
             <div className="buttonmain">
