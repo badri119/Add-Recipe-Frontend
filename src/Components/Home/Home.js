@@ -88,7 +88,7 @@ const Home = ({
 
     try {
       const response = await axios.post(
-        "http://localhost:3001/recipes/post",
+        "https://add-recipe-backend-awl5xh3j4-badri119s-projects.vercel.app/recipes/post",
         newRecipeData,
         { headers: { Auth_Token: token } }
       );
@@ -137,7 +137,7 @@ const Home = ({
   const deleteRecipe = async (recipeId) => {
     try {
       const response = await axios.delete(
-        `http://localhost:3001/recipes/${recipeId}`,
+        `https://add-recipe-backend-awl5xh3j4-badri119s-projects.vercel.app/recipes/${recipeId}`,
         {
           headers: { Auth_Token: token },
         }
@@ -163,10 +163,13 @@ const Home = ({
     const getRecipe = async () => {
       try {
         //Getting Recipes from backend
-        const response = await axios.get("http://localhost:3001/recipes", {
-          headers: { Auth_Token: token },
-        });
-        console.log(response.data[0].preparation);
+        const response = await axios.get(
+          "https://add-recipe-backend-awl5xh3j4-badri119s-projects.vercel.app/recipes",
+          {
+            headers: { Auth_Token: token },
+          }
+        );
+        // console.log(response.data[0].preparation);
         setAllRecipes(response.data);
         setFilteredRecipes(response.data);
         // console.log(token);

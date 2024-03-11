@@ -32,11 +32,14 @@ const SignUpPage = () => {
       // console.log(validpass);
 
       if (validpass === true) {
-        const response = await axios.post("http://localhost:3001/signup", {
-          name: name,
-          password: pass,
-          email: email,
-        });
+        const response = await axios.post(
+          "https://add-recipe-backend-awl5xh3j4-badri119s-projects.vercel.app/signup",
+          {
+            name: name,
+            password: pass,
+            email: email,
+          }
+        );
         // console.log(response.data);
 
         navigate("/");

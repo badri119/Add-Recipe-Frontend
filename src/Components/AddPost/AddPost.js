@@ -40,7 +40,7 @@ const AddPost = ({
     try {
       // console.log(token);
       const editedResponse = await axios.patch(
-        `http://localhost:3001/recipes/${recipeId}`,
+        `https://add-recipe-backend-awl5xh3j4-badri119s-projects.vercel.app/recipes/${recipeId}`,
         updatedData,
         {
           headers: { Auth_Token: token },
