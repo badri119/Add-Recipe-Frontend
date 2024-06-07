@@ -8,7 +8,7 @@ https://github.com/badri119/Add-Recipe-Backend
 
 <a href="https://youtu.be/v_g3jq2_uP0" target="_blank">AddRecipe Tutorial</a>
 
-![Login](image.png)
+![Home](<../../../Learning/Playing with React/generator/client/src/images/Home.png>)
 
 # Technical Details:
 
